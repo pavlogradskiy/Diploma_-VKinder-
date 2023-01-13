@@ -1,2 +1,2 @@
-SQLAlchemy==1.4.31
-vk_api==11.9.7
+SQLAlchemy==1.4.46
+vk_api==11.9.9

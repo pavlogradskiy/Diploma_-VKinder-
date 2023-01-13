@@ -7,7 +7,6 @@ from vk_api.keyboard import VkKeyboard
 import DbVk
 from MyVkApi import MyVkApi
 
-
 TOKEN_GROUP = ''
 TOKEN_USER = ''
 RELATION_DICT = {
@@ -59,13 +58,13 @@ def all_time_keyboard(buttons: list):
 def write_msg(user_id, message, keyboard=None, attachment=None):
     vk_bot.method(
         'messages.send',
-              {
-                  'user_id': user_id,
-                  'message': message,
-                  'random_id': randrange(10 ** 7),
-                  'keyboard': keyboard,
-                  'attachment': attachment
-              }
+        {
+            'user_id': user_id,
+            'message': message,
+            'random_id': randrange(10 ** 7),
+            'keyboard': keyboard,
+            'attachment': attachment
+        }
     )
 
 
@@ -141,7 +140,6 @@ def show_three_users(vk_user, session):
 
 
 def start_bot(session):
-
     for event in longpoll.listen():
         if event.type == VkEventType.MESSAGE_NEW and event.to_me:
             text_message = event.text.lower()
@@ -152,7 +150,7 @@ def start_bot(session):
                 vk_user = MyVkApi(token=TOKEN_USER)
                 vk_user.get_user_info(sender_id)
                 message = f'Салют, {vk_user.name}\n' \
-                         f'Ты здесь, чтобы найти себе пару. И я помогу.\n' \
+                          f'Ты здесь, чтобы найти себе пару. И я помогу.\n' \
                           f'Не забудь написать мне "пока" или нажать ' \
                           f'кнопку "на сегодня хватит", ' \
                           f'чтобы сохранить результаты поиска'
@@ -191,10 +189,11 @@ def start_bot(session):
                 show_three_users(vk_user, session)
 
             elif text_message in ('пока', 'на сегодня хватит'):
-              send_goodbye_msg(vk_user)
-              break
+                send_goodbye_msg(vk_user)
+                break
             else:
                 write_msg(vk_user.id, "Не понял вашего ответа...")
+
 
 if __name__ == '__main__':
     print('Start')

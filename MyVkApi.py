@@ -1,9 +1,9 @@
-from vk_api.vk_api import VkApi
+from vk_api.vk_api import vk_api
 
 PARAMETERS_FOR_SEARCH = ['bdate', 'sex', 'relation', 'city']
 
 
-class MyVkApi(VkApi):
+class MyVkApi(vk_api):
     users_find_list = []
     already_seen_users = []
 

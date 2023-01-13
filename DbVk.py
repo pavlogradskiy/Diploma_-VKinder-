@@ -1,10 +1,11 @@
+#import psycopg2
 import sqlalchemy as sq
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship
 from datetime import date
 
 Base = declarative_base()
-engine = sq.create_engine('postgresql://oks:@localhost:5432/vk_users_db', client_encoding='utf8')
+engine = sq.create_engine('postgresql://postgres:superuser@localhost:5432/vk_users_db', client_encoding='utf8')
 Session = sessionmaker(bind=engine)
 
 
