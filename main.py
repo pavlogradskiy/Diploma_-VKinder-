@@ -84,7 +84,7 @@ def ask_params(missing_params, vk_user):
                 bdate = wait_new_message()
                 if bdate.lower() == 'пока':
                     return True
-                if bdate.isdigit() and 1930 <= int(bdate) <= 2006:
+                if bdate.isdigit() and 1975 <= int(bdate) <= 2000:
                     vk_user.bdate = bdate
                     break
             elif param == 'sex':
@@ -167,7 +167,7 @@ def start_bot(session):
                     if text_message == 'задать новые параметры':
                         bye_bye = ask_params(PARAMETERS_FOR_SEARCH, vk_user)
                     elif text_message == 'поиск по текущим параметрам' and vk_user.missing_params:
-                        write_msg(vk_user.id, 'Мне нужно еще немного информации о вас.')
+                        write_msg(vk_user.id, 'Мне нужно еще немного информации о вас...')
                         bye_bye = ask_params(vk_user.missing_params, vk_user)
 
                     if bye_bye:
